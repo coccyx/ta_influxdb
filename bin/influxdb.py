@@ -2,7 +2,7 @@ import random, sys
 import json
 
 from splunklib.modularinput import *
-from influxdb_webserver import bootstrap_web_service
+from cherrypy_webserver import bootstrap_web_service
 
 class MyScript(Script):
     def get_scheme(self):
@@ -42,7 +42,7 @@ class MyScript(Script):
             event.stanza = self.name
             event.index = self.index
             event.sourcetype = self.sourcetype
-            event.time = x['timestamp']
+            event.time = long(x['timestamp'])
             event.data = json.dumps(x)
 
             self.ew.write_event(event)
