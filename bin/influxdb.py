@@ -42,7 +42,7 @@ class MyScript(Script):
             event.stanza = self.name
             event.index = self.index
             event.sourcetype = self.sourcetype
-            event.time = long(x['timestamp'])
+            event.time = float(x['timestamp'])
             event.data = json.dumps(x)
 
             self.ew.write_event(event)
